@@ -1,0 +1,27 @@
+2020-06-02 22:24:02 [scrapy] DEBUG: Crawled (200) <GET https://www.yelp.com/> (referer: None)
+2020-06-02 22:24:31 [scrapy] DEBUG: Crawled (200) <GET https://www.yelp.com/search?find_desc=Japanese+Restaurants&find_loc=San+Diego%2C+CA&ns=1> (referer: https://www.yelp.com/)
+2020-06-02 22:24:50 [scrapy] DEBUG: Crawled (200) <GET https://www.yelp.com/search?find_desc=Japanese%20Restaurants&find_loc=San%20Diego%2C%20CA&start=30> (referer: https://www.yelp.com/search?find_desc=Japanese+Restaurants&find_loc=San+Diego%2C+CA&ns=1)
+2020-06-02 22:25:09 [scrapy] DEBUG: Crawled (200) <GET https://www.yelp.com/search?find_desc=Japanese%20Restaurants&find_loc=San%20Diego%2C%20CA&start=60> (referer: https://www.yelp.com/search?find_desc=Japanese%20Restaurants&find_loc=San%20Diego%2C%20CA&start=30)
+2020-06-02 22:25:25 [scrapy] DEBUG: Crawled (200) <GET https://www.yelp.com/search?find_desc=Japanese%20Restaurants&find_loc=San%20Diego%2C%20CA&start=90> (referer: https://www.yelp.com/search?find_desc=Japanese%20Restaurants&find_loc=San%20Diego%2C%20CA&start=60)
+2020-06-02 22:25:44 [scrapy] DEBUG: Crawled (200) <GET https://www.yelp.com/search?find_desc=Japanese%20Restaurants&find_loc=San%20Diego%2C%20CA&start=120> (referer: https://www.yelp.com/search?find_desc=Japanese%20Restaurants&find_loc=San%20Diego%2C%20CA&start=90)
+2020-06-02 22:26:24 [scrapy] ERROR: Error downloading <GET https://www.yelp.com/search?find_desc=Japanese%20Restaurants&find_loc=San%20Diego%2C%20CA&start=150>
+Traceback (most recent call last):
+  File "f:\web scrapping\yelp\venv\lib\site-packages\twisted\internet\defer.py", line 1418, in _inlineCallbacks
+    result = g.send(result)
+  File "f:\web scrapping\yelp\venv\lib\site-packages\scrapy\core\downloader\middleware.py", line 36, in process_request
+    response = yield deferred_from_coro(method(request=request, spider=spider))
+  File "f:\web scrapping\yelp\venv\lib\site-packages\scrapy_selenium\middlewares.py", line 100, in process_request
+    request.meta['screenshot'] = self.driver.get_screenshot_as_png()
+  File "f:\web scrapping\yelp\venv\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 1064, in get_screenshot_as_png
+    return base64.b64decode(self.get_screenshot_as_base64().encode('ascii'))
+  File "f:\web scrapping\yelp\venv\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 1074, in get_screenshot_as_base64
+    return self.execute(Command.SCREENSHOT)['value']
+  File "f:\web scrapping\yelp\venv\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "f:\web scrapping\yelp\venv\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchWindowException: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=83.0.4103.61)
+
+2020-06-02 22:26:29 [scrapy] INFO: Closing spider (finished)

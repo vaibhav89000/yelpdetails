@@ -1,0 +1,44 @@
+2020-06-02 23:18:42 [scrapy] DEBUG: Crawled (200) <GET https://www.yelp.com/> (referer: None)
+2020-06-02 23:18:59 [scrapy] DEBUG: Crawled (200) <GET https://www.yelp.com/search?find_desc=Restaurants&find_loc=San+Diego%2C+CA&ns=1> (referer: https://www.yelp.com/)
+2020-06-02 23:19:07 [scrapy] DEBUG: Crawled (200) <GET https://www.yelp.com/search?find_desc=Restaurants&find_loc=San%20Diego%2C%20CA&start=30> (referer: https://www.yelp.com/search?find_desc=Restaurants&find_loc=San+Diego%2C+CA&ns=1)
+2020-06-02 23:19:14 [scrapy] DEBUG: Crawled (200) <GET https://www.yelp.com/search?find_desc=Restaurants&find_loc=San%20Diego%2C%20CA&start=60> (referer: https://www.yelp.com/search?find_desc=Restaurants&find_loc=San%20Diego%2C%20CA&start=30)
+2020-06-02 23:19:29 [scrapy] ERROR: Error downloading <GET https://www.yelp.com/search?find_desc=Restaurants&find_loc=San%20Diego%2C%20CA&start=90>
+Traceback (most recent call last):
+  File "f:\web scrapping\yelp\venv\lib\site-packages\twisted\internet\defer.py", line 1418, in _inlineCallbacks
+    result = g.send(result)
+  File "f:\web scrapping\yelp\venv\lib\site-packages\scrapy\core\downloader\middleware.py", line 36, in process_request
+    response = yield deferred_from_coro(method(request=request, spider=spider))
+  File "f:\web scrapping\yelp\venv\lib\site-packages\scrapy_selenium\middlewares.py", line 105, in process_request
+    body = str.encode(self.driver.page_source)
+  File "f:\web scrapping\yelp\venv\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 679, in page_source
+    return self.execute(Command.GET_PAGE_SOURCE)['value']
+  File "f:\web scrapping\yelp\venv\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "f:\web scrapping\yelp\venv\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.WebDriverException: Message: chrome not reachable
+  (Session info: chrome=83.0.4103.61)
+
+2020-06-02 23:19:29 [scrapy] INFO: Closing spider (finished)
+2020-06-02 23:19:31 [scrapy] INFO: Dumping Scrapy stats:
+{'downloader/exception_count': 1,
+ 'downloader/exception_type_count/selenium.common.exceptions.WebDriverException': 1,
+ 'downloader/response_bytes': 4224812,
+ 'downloader/response_count': 4,
+ 'downloader/response_status_count/200': 4,
+ 'elapsed_time_seconds': 52.43309,
+ 'finish_reason': 'finished',
+ 'finish_time': datetime.datetime(2020, 6, 2, 17, 49, 29, 562163),
+ 'httpcache/firsthand': 4,
+ 'httpcache/store': 4,
+ 'log_count/DEBUG': 108,
+ 'log_count/ERROR': 1,
+ 'log_count/INFO': 7,
+ 'request_depth_max': 4,
+ 'response_received_count': 4,
+ 'scheduler/dequeued': 5,
+ 'scheduler/dequeued/memory': 5,
+ 'scheduler/enqueued': 5,
+ 'scheduler/enqueued/memory': 5,
+ 'start_time': datetime.datetime(2020, 6, 2, 17, 48, 37, 129073)}
+2020-06-02 23:19:31 [scrapy] INFO: Spider closed (finished)

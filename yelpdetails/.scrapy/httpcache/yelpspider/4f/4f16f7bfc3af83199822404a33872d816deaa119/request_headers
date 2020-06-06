@@ -1,0 +1,5 @@
+Referer: https://www.yelp.com/search?find_desc=Japanese%20Restaurants&find_loc=San%20Diego%2C%20CA&start=180
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en
+User-Agent: Scrapy/2.1.0 (+https://scrapy.org)
+Accept-Encoding: gzip, deflate

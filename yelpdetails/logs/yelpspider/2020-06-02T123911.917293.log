@@ -1,0 +1,181 @@
+2020-06-02 12:39:23 [scrapy] DEBUG: Crawled (200) <GET https://www.yelp.com/> (referer: None)
+2020-06-02 12:39:39 [scrapy] DEBUG: Crawled (200) <GET https://www.yelp.com/search?find_desc=Japanese+Restaurants&find_loc=San+Diego%2C+CA&ns=1> (referer: https://www.yelp.com/)
+2020-06-02 12:39:45 [scrapy] DEBUG: Crawled (200) <GET https://www.yelp.com/search?find_desc=Japanese%20Restaurants&find_loc=San%20Diego%2C%20CA&start=30> (referer: https://www.yelp.com/search?find_desc=Japanese+Restaurants&find_loc=San+Diego%2C+CA&ns=1)
+2020-06-02 12:39:51 [scrapy] DEBUG: Crawled (200) <GET https://www.yelp.com/search?find_desc=Japanese%20Restaurants&find_loc=San%20Diego%2C%20CA&start=60> (referer: https://www.yelp.com/search?find_desc=Japanese%20Restaurants&find_loc=San%20Diego%2C%20CA&start=30)
+2020-06-02 12:39:57 [scrapy] DEBUG: Crawled (200) <GET https://www.yelp.com/search?find_desc=Japanese%20Restaurants&find_loc=San%20Diego%2C%20CA&start=90> (referer: https://www.yelp.com/search?find_desc=Japanese%20Restaurants&find_loc=San%20Diego%2C%20CA&start=60)
+2020-06-02 12:40:03 [scrapy] DEBUG: Crawled (200) <GET https://www.yelp.com/search?find_desc=Japanese%20Restaurants&find_loc=San%20Diego%2C%20CA&start=120> (referer: https://www.yelp.com/search?find_desc=Japanese%20Restaurants&find_loc=San%20Diego%2C%20CA&start=90)
+2020-06-02 12:40:08 [scrapy] DEBUG: Crawled (200) <GET https://www.yelp.com/search?find_desc=Japanese%20Restaurants&find_loc=San%20Diego%2C%20CA&start=150> (referer: https://www.yelp.com/search?find_desc=Japanese%20Restaurants&find_loc=San%20Diego%2C%20CA&start=120)
+2020-06-02 12:40:14 [scrapy] DEBUG: Crawled (200) <GET https://www.yelp.com/search?find_desc=Japanese%20Restaurants&find_loc=San%20Diego%2C%20CA&start=180> (referer: https://www.yelp.com/search?find_desc=Japanese%20Restaurants&find_loc=San%20Diego%2C%20CA&start=150)
+2020-06-02 12:40:20 [scrapy] DEBUG: Crawled (200) <GET https://www.yelp.com/search?find_desc=Japanese%20Restaurants&find_loc=San%20Diego%2C%20CA&start=210> (referer: https://www.yelp.com/search?find_desc=Japanese%20Restaurants&find_loc=San%20Diego%2C%20CA&start=180)
+2020-06-02 12:40:26 [scrapy] DEBUG: Crawled (200) <GET https://www.yelp.com/search?find_desc=Japanese%20Restaurants&find_loc=San%20Diego%2C%20CA&start=240> (referer: https://www.yelp.com/search?find_desc=Japanese%20Restaurants&find_loc=San%20Diego%2C%20CA&start=210)
+2020-06-02 12:40:31 [scrapy] DEBUG: Crawled (200) <GET https://www.yelp.com/search?find_desc=Japanese%20Restaurants&find_loc=San%20Diego%2C%20CA&start=270> (referer: https://www.yelp.com/search?find_desc=Japanese%20Restaurants&find_loc=San%20Diego%2C%20CA&start=240)
+2020-06-02 12:40:37 [scrapy] DEBUG: Crawled (200) <GET https://www.yelp.com/search?find_desc=Japanese%20Restaurants&find_loc=San%20Diego%2C%20CA&start=300> (referer: https://www.yelp.com/search?find_desc=Japanese%20Restaurants&find_loc=San%20Diego%2C%20CA&start=270)
+2020-06-02 12:40:42 [scrapy] DEBUG: Crawled (200) <GET https://www.yelp.com/search?find_desc=Japanese%20Restaurants&find_loc=San%20Diego%2C%20CA&start=330> (referer: https://www.yelp.com/search?find_desc=Japanese%20Restaurants&find_loc=San%20Diego%2C%20CA&start=300)
+2020-06-02 12:40:48 [scrapy] DEBUG: Crawled (200) <GET https://www.yelp.com/search?find_desc=Japanese%20Restaurants&find_loc=San%20Diego%2C%20CA&start=360> (referer: https://www.yelp.com/search?find_desc=Japanese%20Restaurants&find_loc=San%20Diego%2C%20CA&start=330)
+2020-06-02 12:40:53 [scrapy] DEBUG: Crawled (200) <GET https://www.yelp.com/search?find_desc=Japanese%20Restaurants&find_loc=San%20Diego%2C%20CA&start=390> (referer: https://www.yelp.com/search?find_desc=Japanese%20Restaurants&find_loc=San%20Diego%2C%20CA&start=360)
+2020-06-02 12:40:59 [scrapy] DEBUG: Crawled (200) <GET https://www.yelp.com/search?find_desc=Japanese%20Restaurants&find_loc=San%20Diego%2C%20CA&start=420> (referer: https://www.yelp.com/search?find_desc=Japanese%20Restaurants&find_loc=San%20Diego%2C%20CA&start=390)
+2020-06-02 12:41:04 [scrapy] DEBUG: Crawled (200) <GET https://www.yelp.com/search?find_desc=Japanese%20Restaurants&find_loc=San%20Diego%2C%20CA&start=450> (referer: https://www.yelp.com/search?find_desc=Japanese%20Restaurants&find_loc=San%20Diego%2C%20CA&start=420)
+2020-06-02 12:41:09 [scrapy] DEBUG: Crawled (200) <GET https://www.yelp.com/search?find_desc=Japanese%20Restaurants&find_loc=San%20Diego%2C%20CA&start=480> (referer: https://www.yelp.com/search?find_desc=Japanese%20Restaurants&find_loc=San%20Diego%2C%20CA&start=450)
+2020-06-02 12:41:14 [scrapy] DEBUG: Crawled (200) <GET https://www.yelp.com/search?find_desc=Japanese%20Restaurants&find_loc=San%20Diego%2C%20CA&start=510> (referer: https://www.yelp.com/search?find_desc=Japanese%20Restaurants&find_loc=San%20Diego%2C%20CA&start=480)
+2020-06-02 12:41:19 [scrapy] DEBUG: Crawled (200) <GET https://www.yelp.com/search?find_desc=Japanese%20Restaurants&find_loc=San%20Diego%2C%20CA&start=540> (referer: https://www.yelp.com/search?find_desc=Japanese%20Restaurants&find_loc=San%20Diego%2C%20CA&start=510)
+2020-06-02 12:41:25 [scrapy] DEBUG: Crawled (200) <GET https://www.yelp.com/adredir?ad_business_id=VvQ4oy4FFaXdUiNcfqcr5A&campaign_id=0PM1PX92o8GI2B4cxVUHCA&click_origin=search_results&placement=above_search&redirect_url=https%3A%2F%2Fwww.yelp.com%2Fbiz%2Fkarami-ramen-san-diego&request_id=525e82c6ce5fafcc&signature=cb0f8d791dfb308febb4f8e08f5284a04b59de5b5198eb2f88717764e7c5903e&slot=0> (referer: https://www.yelp.com/search?find_desc=Japanese%20Restaurants&find_loc=San%20Diego%2C%20CA&start=540)
+2020-06-02 12:41:26 [scrapy] DEBUG: Scraped from <200 https://www.yelp.com/biz/karami-ramen-san-diego>
+{'Direction': 'https://www.yelp.com/map/karami-ramen-san-diego',
+ 'Name': 'Karami Ramen',
+ 'phone': '(858) 430-6300',
+ 'website_link': 'https://www.yelp.com/biz_redir?url=https%3A%2F%2Fwww.karamiramen.com&website_link_type=website&src_bizid=VvQ4oy4FFaXdUiNcfqcr5A&cachebuster=1591081880&s=095bc3eeacec26f8fe03bec6e382b40b4fdc22842aa17bcc7fd23778836c7ef8',
+ 'website_name': 'karamiramen.com'}
+2020-06-02 12:41:31 [scrapy] DEBUG: Crawled (200) <GET https://www.yelp.com/adredir?ad_business_id=m7Rw-yPOkEW5jqqoM9FuCg&campaign_id=xZBAjo7ZbQ1F1S9b01q0aA&click_origin=search_results&placement=above_search&redirect_url=https%3A%2F%2Fwww.yelp.com%2Fbiz%2Fototo-sushi-san-diego-34&request_id=525e82c6ce5fafcc&signature=3d21fcf847b23a7743d9bc89cc92b0de5c9697db33f6aee09b737266cf569d26&slot=1> (referer: https://www.yelp.com/biz/karami-ramen-san-diego)
+2020-06-02 12:41:32 [scrapy] DEBUG: Scraped from <200 https://www.yelp.com/biz/ototo-sushi-san-diego-34>
+{'Direction': 'https://www.yelp.com/map/ototo-sushi-san-diego-34',
+ 'Name': 'Ototo Sushi',
+ 'phone': '(619) 224-0100',
+ 'website_link': 'https://www.yelp.com/biz_redir?url=http%3A%2F%2Fwww.ototosushico.com&website_link_type=website&src_bizid=m7Rw-yPOkEW5jqqoM9FuCg&cachebuster=1591081887&s=91a52c14805bbbb3a494ae923fbf9254795d85ae111f663f28a5ca9d962d5901',
+ 'website_name': 'ototosushico.com'}
+2020-06-02 12:41:37 [scrapy] DEBUG: Crawled (200) <GET https://www.yelp.com/biz/wa-dining-okan-san-diego-2?osq=Japanese+Restaurants> (referer: https://www.yelp.com/biz/ototo-sushi-san-diego-34)
+2020-06-02 12:41:38 [scrapy] DEBUG: Scraped from <200 https://www.yelp.com/biz/wa-dining-okan-san-diego-2?osq=Japanese+Restaurants>
+{'Direction': 'https://www.yelp.com/map/wa-dining-okan-san-diego-2',
+ 'Name': 'Wa Dining OKAN',
+ 'phone': '(858) 279-0941',
+ 'website_link': 'https://www.yelp.com/biz_redir?url=http%3A%2F%2Fwadiningokan.top-cafes.com&website_link_type=website&src_bizid=9ylUZ4hPyg7UVcZn6cp4gA&cachebuster=1591081893&s=f65a5647a788eec5dbeae40be1e9816ec098650796e8e3548d46b05024cd7155',
+ 'website_name': 'wadiningokan.top-cafes.com'}
+2020-06-02 12:41:43 [scrapy] DEBUG: Crawled (200) <GET https://www.yelp.com/biz/azuki-sushi-san-diego-2?osq=Japanese+Restaurants> (referer: https://www.yelp.com/biz/wa-dining-okan-san-diego-2?osq=Japanese+Restaurants)
+2020-06-02 12:41:44 [scrapy] DEBUG: Scraped from <200 https://www.yelp.com/biz/azuki-sushi-san-diego-2?osq=Japanese+Restaurants>
+{'Direction': 'https://www.yelp.com/map/azuki-sushi-san-diego-2',
+ 'Name': 'Azuki Sushi',
+ 'phone': '(619) 238-4760',
+ 'website_link': 'https://www.yelp.com/biz_redir?url=http%3A%2F%2Fwww.azukisushi.com&website_link_type=website&src_bizid=O1NFJA0OI0-N77JzP7qlfQ&cachebuster=1591081899&s=b2cd1a9c883120c24c275504f802ac7a6f04dd1554bd74f5b05e63b1acc8683f',
+ 'website_name': 'azukisushi.com'}
+2020-06-02 12:41:50 [scrapy] DEBUG: Crawled (200) <GET https://www.yelp.com/biz/yokohama-yakitori-koubou-san-diego-2?osq=Japanese+Restaurants> (referer: https://www.yelp.com/biz/azuki-sushi-san-diego-2?osq=Japanese+Restaurants)
+2020-06-02 12:41:51 [scrapy] DEBUG: Scraped from <200 https://www.yelp.com/biz/yokohama-yakitori-koubou-san-diego-2?osq=Japanese+Restaurants>
+{'Direction': 'https://www.yelp.com/map/yokohama-yakitori-koubou-san-diego-2',
+ 'Name': 'Yokohama Yakitori Koubou',
+ 'phone': '(858) 277-8822',
+ 'website_link': 'https://www.yelp.com/biz_redir?url=http%3A%2F%2Fwww.yokohamayakitorikoubou.com%2F&website_link_type=website&src_bizid=jl4sx_VhdObAQgRrNb458g&cachebuster=1591081905&s=2ad0b90a5b64c4e0a46fb169de19ef3b9802905e813a3d7d2b6c8af9779fcdb7',
+ 'website_name': 'yokohamayakitorikoubou.com'}
+2020-06-02 12:41:57 [scrapy] DEBUG: Crawled (200) <GET https://www.yelp.com/biz/sushi-ota-san-diego?osq=Japanese+Restaurants> (referer: https://www.yelp.com/biz/yokohama-yakitori-koubou-san-diego-2?osq=Japanese+Restaurants)
+2020-06-02 12:41:57 [scrapy] DEBUG: Scraped from <200 https://www.yelp.com/biz/sushi-ota-san-diego?osq=Japanese+Restaurants>
+{'Direction': 'https://www.yelp.com/map/sushi-ota-san-diego',
+ 'Name': 'Sushi Ota',
+ 'phone': '(858) 270-5670',
+ 'website_link': 'https://www.yelp.com/biz_redir?url=http%3A%2F%2Fwww.sushiota.com%2F&website_link_type=website&src_bizid=3S6VtYgcXL8lRic0iV5GYQ&cachebuster=1591081912&s=1b88277815d61e7eb2553b996c2adb40d841310a7e33f335603a36e1e3e49623',
+ 'website_name': 'sushiota.com'}
+2020-06-02 12:42:04 [scrapy] DEBUG: Crawled (200) <GET https://www.yelp.com/biz/izakaya-masa-san-diego?osq=Japanese+Restaurants> (referer: https://www.yelp.com/biz/sushi-ota-san-diego?osq=Japanese+Restaurants)
+2020-06-02 12:42:04 [scrapy] DEBUG: Scraped from <200 https://www.yelp.com/biz/izakaya-masa-san-diego?osq=Japanese+Restaurants>
+{'Direction': 'https://www.yelp.com/map/izakaya-masa-san-diego',
+ 'Name': 'Izakaya Masa',
+ 'phone': '(619) 542-1354',
+ 'website_link': 'https://www.yelp.com/biz_redir?url=http%3A%2F%2Fwww.izakayamasa.com&website_link_type=website&src_bizid=1yhgFgMc_QTuayFjROHhCQ&cachebuster=1591081919&s=fe3e577fa3a93793c42913983f09fb2d482390f2e29016ae033ce3b606f97cf7',
+ 'website_name': 'izakayamasa.com'}
+2020-06-02 12:42:10 [scrapy] DEBUG: Crawled (200) <GET https://www.yelp.com/biz/kokoro-restaurant-san-diego-2?osq=Japanese+Restaurants> (referer: https://www.yelp.com/biz/izakaya-masa-san-diego?osq=Japanese+Restaurants)
+2020-06-02 12:42:10 [scrapy] DEBUG: Scraped from <200 https://www.yelp.com/biz/kokoro-restaurant-san-diego-2?osq=Japanese+Restaurants>
+{'Direction': 'https://www.yelp.com/map/kokoro-restaurant-san-diego-2',
+ 'Name': 'Kokoro Restaurant',
+ 'phone': '(858) 565-4113',
+ 'website_link': 'https://www.yelp.com/biz_redir?url=http%3A%2F%2Fwww.kokoro-restaurant.net&website_link_type=website&src_bizid=fmk13zHLXQ8gtPOVkVGB6w&cachebuster=1591081925&s=4779c22dbff4877e5ec8ba8fda72c13bb25c708e133c26ef345c5e27ffae808c',
+ 'website_name': 'kokoro-restaurant.net'}
+2020-06-02 12:42:16 [scrapy] DEBUG: Crawled (200) <GET https://www.yelp.com/biz/yakyudori-san-diego?osq=Japanese+Restaurants> (referer: https://www.yelp.com/biz/kokoro-restaurant-san-diego-2?osq=Japanese+Restaurants)
+2020-06-02 12:42:17 [scrapy] DEBUG: Scraped from <200 https://www.yelp.com/biz/yakyudori-san-diego?osq=Japanese+Restaurants>
+{'Direction': 'https://www.yelp.com/map/yakyudori-san-diego',
+ 'Name': 'Yakyudori',
+ 'phone': '(858) 268-2888',
+ 'website_link': 'https://www.yelp.com/biz_redir?url=http%3A%2F%2Fsandiegoyakyudori.com%2Fpage%2Fyakyudori&website_link_type=website&src_bizid=_T88LJN8whEPe6uovSsb0g&cachebuster=1591081931&s=59bc3f7873d4a6db295d8cd88fa8dee1b66687b9bf6fbe3126927fe5663ad2b5',
+ 'website_name': 'sandiegoyakyudori.com/page/yak…'}
+2020-06-02 12:42:22 [scrapy] DEBUG: Crawled (200) <GET https://www.yelp.com/biz/ikiru-japanese-san-diego?osq=Japanese+Restaurants> (referer: https://www.yelp.com/biz/yakyudori-san-diego?osq=Japanese+Restaurants)
+2020-06-02 12:42:23 [scrapy] DEBUG: Scraped from <200 https://www.yelp.com/biz/ikiru-japanese-san-diego?osq=Japanese+Restaurants>
+{'Direction': 'https://www.yelp.com/map/ikiru-japanese-san-diego',
+ 'Name': 'Ikiru Japanese',
+ 'phone': '(619) 221-1228',
+ 'website_link': 'NA',
+ 'website_name': 'NA'}
+2020-06-02 12:42:28 [scrapy] DEBUG: Crawled (200) <GET https://www.yelp.com/biz/ee-nami-tonkatsu-izakaya-san-diego?osq=Japanese+Restaurants> (referer: https://www.yelp.com/biz/ikiru-japanese-san-diego?osq=Japanese+Restaurants)
+2020-06-02 12:42:28 [scrapy] DEBUG: Scraped from <200 https://www.yelp.com/biz/ee-nami-tonkatsu-izakaya-san-diego?osq=Japanese+Restaurants>
+{'Direction': 'https://www.yelp.com/map/ee-nami-tonkatsu-izakaya-san-diego',
+ 'Name': 'EE NAMI Tonkatsu Izakaya',
+ 'phone': '(858) 246-6903',
+ 'website_link': 'https://www.yelp.com/biz_redir?url=http%3A%2F%2Feenamisd.com&website_link_type=website&src_bizid=7CjC7lj7bXvjPPRb_HqM3g&cachebuster=1591081943&s=135f684757a2453fa7c71d8b4d6e99e552af43f26e928730592e1948b10d4ff8',
+ 'website_name': 'eenamisd.com'}
+2020-06-02 12:42:34 [scrapy] DEBUG: Crawled (200) <GET https://www.yelp.com/biz/okan-diner-san-diego?osq=Japanese+Restaurants> (referer: https://www.yelp.com/biz/ee-nami-tonkatsu-izakaya-san-diego?osq=Japanese+Restaurants)
+2020-06-02 12:42:34 [scrapy] DEBUG: Scraped from <200 https://www.yelp.com/biz/okan-diner-san-diego?osq=Japanese+Restaurants>
+{'Direction': 'https://www.yelp.com/map/okan-diner-san-diego',
+ 'Name': 'Okan Diner',
+ 'phone': '(858) 278-4228',
+ 'website_link': 'NA',
+ 'website_name': 'NA'}
+2020-06-02 12:42:42 [scrapy] DEBUG: Crawled (200) <GET https://www.yelp.com/biz/robataya-oton-san-diego-2?osq=Japanese+Restaurants> (referer: https://www.yelp.com/biz/okan-diner-san-diego?osq=Japanese+Restaurants)
+2020-06-02 12:42:43 [scrapy] DEBUG: Scraped from <200 https://www.yelp.com/biz/robataya-oton-san-diego-2?osq=Japanese+Restaurants>
+{'Direction': 'https://www.yelp.com/map/robataya-oton-san-diego-2',
+ 'Name': 'Robataya Oton',
+ 'phone': '(858) 277-3989',
+ 'website_link': 'https://www.yelp.com/biz_redir?url=https%3A%2F%2Frobatayaotonsd.com&website_link_type=website&src_bizid=rvKODj_feRX-Ti0LyKSNcg&cachebuster=1591081955&s=8963dbb1362252e4467728d3758fe17b504d7808a4c8307426e5e6a437f06683',
+ 'website_name': 'robatayaotonsd.com'}
+2020-06-02 12:42:48 [scrapy] DEBUG: Crawled (200) <GET https://www.yelp.com/biz/yakitori-taisho-san-diego?osq=Japanese+Restaurants> (referer: https://www.yelp.com/biz/robataya-oton-san-diego-2?osq=Japanese+Restaurants)
+2020-06-02 12:42:48 [scrapy] DEBUG: Scraped from <200 https://www.yelp.com/biz/yakitori-taisho-san-diego?osq=Japanese+Restaurants>
+{'Direction': 'https://www.yelp.com/map/yakitori-taisho-san-diego',
+ 'Name': 'Yakitori Taisho',
+ 'phone': '(858) 752-0468',
+ 'website_link': 'https://www.yelp.com/biz_redir?url=http%3A%2F%2Fsandiegoyakyudori.com%2Fpage%2Ftaisho&website_link_type=website&src_bizid=MSK605T_kipDGhx0VMmaZA&cachebuster=1591081963&s=6d18b7d7f71c78388c991e3b5e8015fcc51108164b64a9630249845af03655f3',
+ 'website_name': 'sandiegoyakyudori.com'}
+2020-06-02 12:42:54 [scrapy] DEBUG: Crawled (200) <GET https://www.yelp.com/biz/soichi-sushi-san-diego-2?osq=Japanese+Restaurants> (referer: https://www.yelp.com/biz/yakitori-taisho-san-diego?osq=Japanese+Restaurants)
+2020-06-02 12:42:55 [scrapy] DEBUG: Scraped from <200 https://www.yelp.com/biz/soichi-sushi-san-diego-2?osq=Japanese+Restaurants>
+{'Direction': 'https://www.yelp.com/map/soichi-sushi-san-diego-2',
+ 'Name': 'Soichi Sushi',
+ 'phone': '(619) 677-2220',
+ 'website_link': 'https://www.yelp.com/biz_redir?url=https%3A%2F%2Fwww.soichisushi.com&website_link_type=website&src_bizid=TSYhYwOPeaZmRNuiJoZaAw&cachebuster=1591081969&s=4b1531b33fd585603522fa6df4b76c025a19347c4b6358bebdd67714d47c95de',
+ 'website_name': 'soichisushi.com'}
+2020-06-02 12:43:01 [scrapy] DEBUG: Crawled (200) <GET https://www.yelp.com/biz/ichiro-japanese-restaurant-san-diego-3?osq=Japanese+Restaurants> (referer: https://www.yelp.com/biz/soichi-sushi-san-diego-2?osq=Japanese+Restaurants)
+2020-06-02 12:43:02 [scrapy] DEBUG: Scraped from <200 https://www.yelp.com/biz/ichiro-japanese-restaurant-san-diego-3?osq=Japanese+Restaurants>
+{'Direction': 'https://www.yelp.com/map/ichiro-japanese-restaurant-san-diego-3',
+ 'Name': 'Ichiro Japanese Restaurant',
+ 'phone': '(858) 565-8603',
+ 'website_link': 'https://www.yelp.com/biz_redir?url=http%3A%2F%2Fwww.ichirosrestaurant.com%2F&website_link_type=website&src_bizid=AMIUmmRIs7_TRhlGTwn3RQ&cachebuster=1591081976&s=b198516543d35f5730e0e84a677401a7ad781aba05e29c464c61e5a2106688e9',
+ 'website_name': 'ichirosrestaurant.com'}
+2020-06-02 12:43:10 [scrapy] DEBUG: Crawled (200) <GET https://www.yelp.com/biz/tajima-mercury-san-diego-6?osq=Japanese+Restaurants> (referer: https://www.yelp.com/biz/ichiro-japanese-restaurant-san-diego-3?osq=Japanese+Restaurants)
+2020-06-02 12:43:10 [scrapy] DEBUG: Scraped from <200 https://www.yelp.com/biz/tajima-mercury-san-diego-6?osq=Japanese+Restaurants>
+{'Direction': 'https://www.yelp.com/map/tajima-mercury-san-diego-6',
+ 'Name': 'Tajima Mercury',
+ 'phone': '(858) 278-5367',
+ 'website_link': 'https://www.yelp.com/biz_redir?url=http%3A%2F%2Ftajimasandiego.com%2Flocations%2Ftajima-mercury%2F&website_link_type=website&src_bizid=-puDFMMdediMnHeqDbvbBg&cachebuster=1591081984&s=f732d350e00bde7d09f769552d2c716a0943545a6a93af7357bf035276ed37f9',
+ 'website_name': 'tajimasandiego.com'}
+2020-06-02 12:43:17 [scrapy] DEBUG: Crawled (200) <GET https://www.yelp.com/biz/tanuki-san-diego?osq=Japanese+Restaurants> (referer: https://www.yelp.com/biz/tajima-mercury-san-diego-6?osq=Japanese+Restaurants)
+2020-06-02 12:43:18 [scrapy] DEBUG: Scraped from <200 https://www.yelp.com/biz/tanuki-san-diego?osq=Japanese+Restaurants>
+{'Direction': 'https://www.yelp.com/map/tanuki-san-diego',
+ 'Name': 'Tanuki',
+ 'phone': '(619) 624-0592',
+ 'website_link': 'https://www.yelp.com/biz_redir?url=https%3A%2F%2Ftanukisakebar.com&website_link_type=website&src_bizid=5IcovCryItzBBv7CMtaAsg&cachebuster=1591081991&s=59271d573370c91b214b791ab25a47cbff5ae7d582fb83d4725d0a90ad16b03f',
+ 'website_name': 'tanukisakebar.com'}
+2020-06-02 12:43:26 [scrapy] DEBUG: Crawled (200) <GET https://www.yelp.com/biz/tsuruhashi-japanese-bbq-san-diego?osq=Japanese+Restaurants> (referer: https://www.yelp.com/biz/tanuki-san-diego?osq=Japanese+Restaurants)
+2020-06-02 12:43:27 [scrapy] DEBUG: Scraped from <200 https://www.yelp.com/biz/tsuruhashi-japanese-bbq-san-diego?osq=Japanese+Restaurants>
+{'Direction': 'https://www.yelp.com/map/tsuruhashi-japanese-bbq-san-diego',
+ 'Name': 'Tsuruhashi Japanese BBQ',
+ 'phone': '(858) 279-8929',
+ 'website_link': 'https://www.yelp.com/biz_redir?url=https%3A%2F%2Ftsuruhashirestaurant.com&website_link_type=website&src_bizid=pbPhJJ70wrT8fockrFZ13Q&cachebuster=1591081999&s=8624e36a271928ddc03399fd5dba5159804a022348e3a371622dd6c206f4ac49',
+ 'website_name': 'tsuruhashirestaurant.com'}
+2020-06-02 12:43:32 [scrapy] DEBUG: Crawled (200) <GET https://www.yelp.com/biz/yoshino-japanese-restaurant-san-diego?osq=Japanese+Restaurants> (referer: https://www.yelp.com/biz/tsuruhashi-japanese-bbq-san-diego?osq=Japanese+Restaurants)
+2020-06-02 12:43:33 [scrapy] DEBUG: Scraped from <200 https://www.yelp.com/biz/yoshino-japanese-restaurant-san-diego?osq=Japanese+Restaurants>
+{'Direction': 'https://www.yelp.com/map/yoshino-japanese-restaurant-san-diego',
+ 'Name': 'Yoshino Japanese Restaurant',
+ 'phone': '(619) 295-2232',
+ 'website_link': 'https://www.yelp.com/biz_redir?url=http%3A%2F%2Fwww.yoshinosjapanese.com&website_link_type=website&src_bizid=79zHqzpW8Gt7QHfNpkOHUw&cachebuster=1591082007&s=e5e4799260494247de1d934583e85e3a2d2e6a7ea9295aa5a5d12fea4b0e9cc1',
+ 'website_name': 'yoshinosjapanese.com'}
+2020-06-02 12:43:33 [scrapy] INFO: Closing spider (closespider_itemcount)
+2020-06-02 12:43:36 [scrapy] INFO: Dumping Scrapy stats:
+{'downloader/response_bytes': 54308465,
+ 'downloader/response_count': 40,
+ 'downloader/response_status_count/200': 40,
+ 'elapsed_time_seconds': 257.045033,
+ 'finish_reason': 'closespider_itemcount',
+ 'finish_time': datetime.datetime(2020, 6, 2, 7, 13, 33, 649028),
+ 'httpcache/firsthand': 40,
+ 'httpcache/store': 40,
+ 'item_scraped_count': 20,
+ 'log_count/DEBUG': 695,
+ 'log_count/INFO': 7,
+ 'request_depth_max': 40,
+ 'response_received_count': 40,
+ 'scheduler/dequeued': 40,
+ 'scheduler/dequeued/memory': 40,
+ 'scheduler/enqueued': 41,
+ 'scheduler/enqueued/memory': 41,
+ 'start_time': datetime.datetime(2020, 6, 2, 7, 9, 16, 603995)}
+2020-06-02 12:43:36 [scrapy] INFO: Spider closed (closespider_itemcount)

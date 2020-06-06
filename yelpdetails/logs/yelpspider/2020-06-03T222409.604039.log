@@ -1,0 +1,34 @@
+2020-06-03 22:24:47 [scrapy] ERROR: Error downloading <GET https://www.yelp.com/>
+Traceback (most recent call last):
+  File "f:\web scrapping\yelp\venv\lib\site-packages\twisted\internet\defer.py", line 1418, in _inlineCallbacks
+    result = g.send(result)
+  File "f:\web scrapping\yelp\venv\lib\site-packages\scrapy\core\downloader\middleware.py", line 36, in process_request
+    response = yield deferred_from_coro(method(request=request, spider=spider))
+  File "f:\web scrapping\yelp\venv\lib\site-packages\scrapy_selenium\middlewares.py", line 84, in process_request
+    self.driver.get(request.url)
+  File "f:\web scrapping\yelp\venv\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 333, in get
+    self.execute(Command.GET, {'url': url})
+  File "f:\web scrapping\yelp\venv\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "f:\web scrapping\yelp\venv\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.WebDriverException: Message: chrome not reachable
+  (Session info: chrome=83.0.4103.61)
+
+2020-06-03 22:24:50 [scrapy] INFO: Closing spider (finished)
+2020-06-03 22:25:02 [scrapy] INFO: Dumping Scrapy stats:
+{'downloader/exception_count': 1,
+ 'downloader/exception_type_count/selenium.common.exceptions.WebDriverException': 1,
+ 'elapsed_time_seconds': 37.741115,
+ 'finish_reason': 'finished',
+ 'finish_time': datetime.datetime(2020, 6, 3, 16, 54, 50, 632803),
+ 'log_count/DEBUG': 42,
+ 'log_count/ERROR': 2,
+ 'log_count/INFO': 10,
+ 'log_count/WARNING': 3,
+ 'scheduler/dequeued': 1,
+ 'scheduler/dequeued/memory': 1,
+ 'scheduler/enqueued': 1,
+ 'scheduler/enqueued/memory': 1,
+ 'start_time': datetime.datetime(2020, 6, 3, 16, 54, 12, 891688)}
+2020-06-03 22:25:02 [scrapy] INFO: Spider closed (finished)
