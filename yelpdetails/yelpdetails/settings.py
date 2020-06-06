@@ -66,9 +66,9 @@ DOWNLOADER_MIDDLEWARES = {
 
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
-#ITEM_PIPELINES = {
-#    'yelpdetails.pipelines.YelpdetailsPipeline': 300,
-#}
+ITEM_PIPELINES = {
+   'yelpdetails.pipelines.YelpdetailsPipeline': 300,
+}
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://docs.scrapy.org/en/latest/topics/autothrottle.html
@@ -99,6 +99,6 @@ SELENIUM_DRIVER_EXECUTABLE_PATH = which('chromedriver')
 SELENIUM_DRIVER_ARGUMENTS=[]  # '--headless' if using chrome instead of firefox
 
 
-CLOSESPIDER_ITEMCOUNT = 20
+CLOSESPIDER_ITEMCOUNT = 5
 HTTPCACHE_ENABLED = True
 HTTPCACHE_EXPIRATION_SECS = 3600

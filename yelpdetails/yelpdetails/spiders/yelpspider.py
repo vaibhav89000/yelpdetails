@@ -136,82 +136,127 @@ class YelpspiderSpider(scrapy.Spider):
         #     direction=f"https://www.yelp.com{map_link}"
         # except:
         #     direction="NA"
+
+
+
+        #
+        # try:
+        #     checkpoint1=response_obj.xpath("(//*[@id='wrap']/div[4]/div/div[3]/div/div/div[2]/div[2]/div/div/section[1]/div/div/div/div[2]/p[2])[1]/a/text()").get()
+        # except:
+        #     checkpoint1 = None
+        # try:
+        #     checkpoint2 = response_obj.xpath("//*[@id='wrap']/div[4]/div/div[3]/div/div/div[2]/div[2]/div/div/section[2]/div/div[1]/div/div[2]/p[2]/a/text()").get()
+        # except:
+        #     checkpoint2 = None
+        #
+        #
+        # if (checkpoint1 == None and checkpoint2 == None):
+        #     try:
+        #         name=response_obj.xpath("//h1/text()").get()
+        #     except:
+        #         name="NA"
+        #     try:
+        #         direction = response_obj.xpath("//*[@id='wrap']/div[4]/div/div[3]/div/div/div[2]/div[2]/div/div/section[1]/div/div[2]/div/div[2]/p/a/@href").get()
+        #     except:
+        #         direction = "NA"
+        #     try:
+        #         web_link = response_obj.xpath("//*[@id='wrap']/div[4]/div/div[3]/div/div/div[2]/div[2]/div/div/section[1]/div/div[1]/div/div[2]/p[2]/a/@href").get()
+        #     except:
+        #         web_link = "NA"
+        #     try:
+        #         webname = response_obj.xpath("//*[@id='wrap']/div[4]/div/div[3]/div/div/div[2]/div[2]/div/div/section[1]/div/div[1]/div/div[2]/p[2]/a/text()").get()
+        #     except:
+        #         webname = "NA"
+        #     try:
+        #         phone = response_obj.xpath("//*[@id='wrap']/div[4]/div/div[3]/div/div/div[2]/div[2]/div/div/section[1]/div/div[1]/div/div[2]/p[2]/text()").get()
+        #     except:
+        #         phone = "NA"
+        #
+        # elif (checkpoint1 == None):
+        #     try:
+        #         name=response_obj.xpath("//h1/text()").get()
+        #     except:
+        #         name = "NA"
+        #     try:
+        #         direction = response_obj.xpath("//*[@id='wrap']/div[4]/div/div[3]/div/div/div[2]/div[2]/div/div/section/div/div[3]/div/div[2]/p/a/@href").get()
+        #     except:
+        #         direction="NA"
+        #     try:
+        #         web_link = response_obj.xpath("//*[@id='wrap']/div[4]/div/div[3]/div/div/div[2]/div[2]/div/div/section[2]/div/div[1]/div/div[2]/p[2]/a/@href").get()
+        #     except:
+        #         web_link = "NA"
+        #     try:
+        #         webname = response_obj.xpath("//*[@id='wrap']/div[4]/div/div[3]/div/div/div[2]/div[2]/div/div/section[2]/div/div[1]/div/div[2]/p[2]/a/text()").get()
+        #     except:
+        #         webname = "NA"
+        #     try:
+        #         phone = response_obj.xpath("//*[@id='wrap']/div[4]/div/div[3]/div/div/div[2]/div[2]/div/div/section[2]/div/div[2]/div/div[2]/p[2]/text()").get()
+        #     except:
+        #         phone = "NA"
+        #
+        # else:
+        #
+        #     try:
+        #         name=response_obj.xpath("//h1/text()").get()
+        #     except:
+        #         name = "NA"
+        #     try:
+        #         direction = response_obj.xpath("//*[@id='wrap']/div[4]/div/div[3]/div/div/div[2]/div[2]/div/div/section/div/div[3]/div/div[2]/p/a/@href").get()
+        #     except:
+        #         direction = response_obj.xpath("//*[@id='wrap']/div[4]/div/div[3]/div/div/div[2]/div[2]/div/div/section/div/div[3]/div/div[2]/p/a/@href").get()
+        #     try:
+        #         web_link = response_obj.xpath("(//*[@id='wrap']/div[4]/div/div[3]/div/div/div[2]/div[2]/div/div/section[1]/div/div/div/div[2]/p[2])[1]/a/@href").get()
+        #     except:
+        #         web_link = "NA"
+        #     try:
+        #         webname = response_obj.xpath("(//*[@id='wrap']/div[4]/div/div[3]/div/div/div[2]/div[2]/div/div/section[1]/div/div/div/div[2]/p[2])[1]/a/text()").get()
+        #     except:
+        #         webname="NA"
+        #     try:
+        #         phone = response_obj.xpath("(//*[@id='wrap']/div[4]/div/div[3]/div/div/div[2]/div[2]/div/div/section[1]/div/div/div/div[2]/p[2])[2]/text()").get()
+        #     except:
+        #         phone="NA"
+
+
+
         try:
-            checkpoint1=response_obj.xpath("(//*[@id='wrap']/div[4]/div/div[3]/div/div/div[2]/div[2]/div/div/section[1]/div/div/div/div[2]/p[2])[1]/a/text()").get()
+            name = response_obj.xpath("//h1/text()").get()
         except:
-            checkpoint1 = None
+            name = None
+
         try:
-            checkpoint2 = response_obj.xpath("//*[@id='wrap']/div[4]/div/div[3]/div/div/div[2]/div[2]/div/div/section[2]/div/div[1]/div/div[2]/p[2]/a/text()").get()
+            webname = response_obj.xpath("//*[@id='wrap']/div[4]/div/div[4 or 3]/div/div/div[2]/div[2]/div/div/section[1 or 2]/div/div[1]/div/div[2]/p[2]/a/text()").get()
         except:
-            checkpoint2 = None
+            webname = None
 
+        if(webname != None):
+            try:
+                web_link  = response_obj.xpath("//*[@id='wrap']/div[4]/div/div[4 or 3]/div/div/div[2]/div[2]/div/div/section[1 or 2]/div/div[1]/div/div[2]/p[2]/a/@href").get()
+            except:
+                web_link = None
 
-        if (checkpoint1 == None and checkpoint2 == None):
             try:
-                name=response_obj.xpath("//h1/text()").get()
+                phone = response_obj.xpath("//*[@id='wrap']/div[4]/div/div[4 or 3]/div/div/div[2]/div[2]/div/div/section[1 or 2]/div/div[2]/div/div[2]/p[2]/text()").get()
             except:
-                name="NA"
+                phone = None
             try:
-                direction = response_obj.xpath("//*[@id='wrap']/div[4]/div/div[3]/div/div/div[2]/div[2]/div/div/section[1]/div/div[2]/div/div[2]/p/a/@href").get()
+                direction = response_obj.xpath("//*[@id='wrap']/div[4]/div/div[3 or 4]/div/div/div[2]/div[2]/div/div/section[1 or 2]/div/div[3]/div/div[2]/p/a/@href").get()
             except:
-                direction = "NA"
-            try:
-                web_link = response_obj.xpath("//*[@id='wrap']/div[4]/div/div[3]/div/div/div[2]/div[2]/div/div/section[1]/div/div[1]/div/div[2]/p[2]/a/@href").get()
-            except:
-                web_link = "NA"
-            try:
-                webname = response_obj.xpath("//*[@id='wrap']/div[4]/div/div[3]/div/div/div[2]/div[2]/div/div/section[1]/div/div[1]/div/div[2]/p[2]/a/text()").get()
-            except:
-                webname = "NA"
-            try:
-                phone = response_obj.xpath("//*[@id='wrap']/div[4]/div/div[3]/div/div/div[2]/div[2]/div/div/section[1]/div/div[1]/div/div[2]/p[2]/text()").get()
-            except:
-                phone = "NA"
-
-        elif (checkpoint1 == None):
-            try:
-                name=response_obj.xpath("//h1/text()").get()
-            except:
-                name = "NA"
-            try:
-                direction = response_obj.xpath("//*[@id='wrap']/div[4]/div/div[3]/div/div/div[2]/div[2]/div/div/section/div/div[3]/div/div[2]/p/a/@href").get()
-            except:
-                direction="NA"
-            try:
-                web_link = response_obj.xpath("//*[@id='wrap']/div[4]/div/div[3]/div/div/div[2]/div[2]/div/div/section[2]/div/div[1]/div/div[2]/p[2]/a/@href").get()
-            except:
-                web_link = "NA"
-            try:
-                webname = response_obj.xpath("//*[@id='wrap']/div[4]/div/div[3]/div/div/div[2]/div[2]/div/div/section[2]/div/div[1]/div/div[2]/p[2]/a/text()").get()
-            except:
-                webname = "NA"
-            try:
-                phone = response_obj.xpath("//*[@id='wrap']/div[4]/div/div[3]/div/div/div[2]/div[2]/div/div/section[2]/div/div[2]/div/div[2]/p[2]/text()").get()
-            except:
-                phone = "NA"
-
+                direction = None
         else:
+            web_link = None
+            try:
+                phone = response_obj.xpath("//*[@id='wrap']/div[4]/div/div[4 or 3]/div/div/div[2]/div[2]/div/div/section[1 or 2]/div/div[2 or 1]/div/div[2]/p[2]/text()").get()
+            except:
+                phone = None
+            try:
+                direction = response_obj.xpath("//*[@id='wrap']/div[4]/div/div[3 or 4]/div/div/div[2]/div[2]/div/div/section[1 or 2]/div/div[3 or 2]/div/div[2]/p/a/@href").get()
+            except:
+                direction = None
 
-            try:
-                name=response_obj.xpath("//h1/text()").get()
-            except:
-                name = "NA"
-            try:
-                direction = response_obj.xpath("//*[@id='wrap']/div[4]/div/div[3]/div/div/div[2]/div[2]/div/div/section/div/div[3]/div/div[2]/p/a/@href").get()
-            except:
-                direction = response_obj.xpath("//*[@id='wrap']/div[4]/div/div[3]/div/div/div[2]/div[2]/div/div/section/div/div[3]/div/div[2]/p/a/@href").get()
-            try:
-                web_link = response_obj.xpath("(//*[@id='wrap']/div[4]/div/div[3]/div/div/div[2]/div[2]/div/div/section[1]/div/div/div/div[2]/p[2])[1]/a/@href").get()
-            except:
-                web_link = "NA"
-            try:
-                webname = response_obj.xpath("(//*[@id='wrap']/div[4]/div/div[3]/div/div/div[2]/div[2]/div/div/section[1]/div/div/div/div[2]/p[2])[1]/a/text()").get()
-            except:
-                webname="NA"
-            try:
-                phone = response_obj.xpath("(//*[@id='wrap']/div[4]/div/div[3]/div/div/div[2]/div[2]/div/div/section[1]/div/div/div/div[2]/p[2])[2]/text()").get()
-            except:
-                phone="NA"
+
+
+
 
         print()
         print(name)
