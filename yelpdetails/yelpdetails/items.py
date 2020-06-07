@@ -15,6 +15,8 @@ class YelpdetailsItem(scrapy.Item):
     phone = scrapy.Field()
     Direction = scrapy.Field()
     category = scrapy.Field()
+    find = scrapy.Field()
+    near = scrapy.Field()
 
 
 
