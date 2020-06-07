@@ -14,5 +14,7 @@ class YelpdetailsItem(scrapy.Item):
     website_link = scrapy.Field()
     phone = scrapy.Field()
     Direction = scrapy.Field()
+    category = scrapy.Field()
+
 
 

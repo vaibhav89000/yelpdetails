@@ -24,7 +24,8 @@ class YelpdetailsPipeline(object):
         website_link text,
         website_name text,
         phone text,
-        Direction text
+        Direction text,
+        category text
         )""")
 
     def process_item(self, item, spider):
@@ -32,12 +33,13 @@ class YelpdetailsPipeline(object):
         return item
 
     def store_db(self,item):
-        self.curr.execute("""insert into detail values (?,?,?,?,?)""",(
+        self.curr.execute("""insert into detail values (?,?,?,?,?,?)""",(
             item['Name'],
             item['website_link'],
             item['website_name'],
             item['phone'],
-            item['Direction']
+            item['Direction'],
+            item['category']
 
         ))
         self.conn.commit()

@@ -72,10 +72,24 @@ class YelpspiderSpider(scrapy.Spider):
         html = driver.page_source
         response_obj = Selector(text=html)
         page=response.meta['page']
-        details=response_obj.xpath('//li[@class="lemon--li__373c0__1r9wz border-color--default__373c0__3-ifU"]/div[@class="lemon--div__373c0__1mboc container__373c0__3HMKB hoverable__373c0__VqkG7 margin-t3__373c0__1l90z margin-b3__373c0__q1DuY padding-t3__373c0__1gw9E padding-r3__373c0__57InZ padding-b3__373c0__342DA padding-l3__373c0__1scQ0 border--top__373c0__3gXLy border--right__373c0__1n3Iv border--bottom__373c0__3qNtD border--left__373c0__d1B7K border-color--default__373c0__3-ifU"]/div/div/div[2]/div[1]/div/div/div/div/div/div/h4/span')
+        # details=response_obj.xpath('//li[@class="lemon--li__373c0__1r9wz border-color--default__373c0__3-ifU"]/div[@class="lemon--div__373c0__1mboc container__373c0__3HMKB hoverable__373c0__VqkG7 margin-t3__373c0__1l90z margin-b3__373c0__q1DuY padding-t3__373c0__1gw9E padding-r3__373c0__57InZ padding-b3__373c0__342DA padding-l3__373c0__1scQ0 border--top__373c0__3gXLy border--right__373c0__1n3Iv border--bottom__373c0__3qNtD border--left__373c0__d1B7K border-color--default__373c0__3-ifU"]/div/div/div[2]/div[1]/div/div/div/div/div/div/h4/span')
+        details = response_obj.xpath('//*[@id="wrap"]/div[3]/div[2]/div/div[1]/div[1]/div[2]/div[2]/ul/li/div')
         for detail in details:
-            a=detail.xpath(".//a/@href").get()
-            page.append(f"https://www.yelp.com{a}")
+            # a=detail.xpath(".//a/@href").get()
+            # a = detail.xpath(".//a/@href").get()
+            # page.append(f"https://www.yelp.com{a}")
+            try:
+                a = detail.xpath(".//div/div/div[2]/div[1]/div/div[1]/div/div[1]/div/div/h4/span/a/@href").get()
+            except:
+                a = None
+
+            if(a==None):
+                try:
+                    a = detail.xpath(".//h3/text()").get()
+                except:
+                    a = None
+            if(a!=None):
+                page.append(f"https://www.yelp.com{a}")
 
         # for i in page:
         #     print(i)
@@ -92,12 +106,30 @@ class YelpspiderSpider(scrapy.Spider):
                 meta={'page': page}
             )
         else:
+            # page.pop(0)
+            print()
+            print()
+            print(page)
+            print()
+            print()
+
+            if ('Sponsored Results' in page[0]):
+                category = 'Sponsored Results'
+                page.pop(0)
+                a = page[0]
+            elif ('All Results' in page[0]):
+                category = 'All Results'
+                page.pop(0)
+                a = page[0]
+            else:
+                category = None
+                a = page[0]
             yield SeleniumRequest(
-                url=page[0],
+                url=a,
                 wait_time=3,
                 screenshot=True,
                 callback=self.scrapepages,
-                meta={'page': page}
+                meta={'page': page,'category': category}
             )
 
 
@@ -256,14 +288,17 @@ class YelpspiderSpider(scrapy.Spider):
 
 
 
-
-
+        try:
+            category = response.meta['category']
+        except:
+            category = 'All Results'
         print()
         print(name)
         print(direction)
         print(web_link)
         print(webname)
         print(phone)
+        print(category)
         print()
         if(name == None):
             name="NA"
@@ -291,16 +326,28 @@ class YelpspiderSpider(scrapy.Spider):
         Yelpdetails_Item['website_name'] = webname
         Yelpdetails_Item['phone'] = phone
         Yelpdetails_Item['Direction'] = direction
+        Yelpdetails_Item['category'] = category
         yield Yelpdetails_Item
         page.pop(0)
         if len(page)!=0:
-            a=page[0]
+
+            if('Sponsored Results' in page[0] ):
+                category = 'Sponsored Results'
+                page.pop(0)
+                a=page[0]
+            elif('All Results' in page[0] ):
+                category = 'All Results'
+                page.pop(0)
+                a=page[0]
+            else:
+                a=page[0]
+            # a=page[0]
             yield SeleniumRequest(
                 url=a,
                 wait_time=3,
                 screenshot=True,
                 callback=self.scrapepages,
-                meta={'page': page}
+                meta={'page': page,'category': category}
             )
 
 
