@@ -6,6 +6,8 @@ from ..items import YelpdetailsItem
 from scrapy.selector import Selector
 from scrapy_selenium import SeleniumRequest
 import os
+from scrapy.linkextractors.lxmlhtml import LxmlLinkExtractor
+import re
 
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -14,6 +16,11 @@ from selenium.webdriver.common.by import By
 
 class YelpspiderSpider(scrapy.Spider):
     name = 'yelpspider'
+    web_link = ""
+    webname = ""
+    phone = ""
+    direction = ""
+
 
     def start_requests(self):
         index = 0
@@ -106,22 +113,40 @@ class YelpspiderSpider(scrapy.Spider):
 
         # details=response_obj.xpath('//li[@class="lemon--li__373c0__1r9wz border-color--default__373c0__3-ifU"]/div[@class="lemon--div__373c0__1mboc container__373c0__3HMKB hoverable__373c0__VqkG7 margin-t3__373c0__1l90z margin-b3__373c0__q1DuY padding-t3__373c0__1gw9E padding-r3__373c0__57InZ padding-b3__373c0__342DA padding-l3__373c0__1scQ0 border--top__373c0__3gXLy border--right__373c0__1n3Iv border--bottom__373c0__3qNtD border--left__373c0__d1B7K border-color--default__373c0__3-ifU"]/div/div/div[2]/div[1]/div/div/div/div/div/div/h4/span')
         details = response_obj.xpath('//*[@id="wrap"]/div[3]/div[2]/div/div[1]/div[1]/div[2]/div[2]/ul/li/div')
+        check = ''
         for detail in details:
             # a=detail.xpath(".//a/@href").get()
             # a = detail.xpath(".//a/@href").get()
             # page.append(f"https://www.yelp.com{a}")
             try:
                 a = detail.xpath(".//div/div/div[2]/div[1]/div/div[1]/div/div[1]/div/div/h4/span/a/@href").get()
+                # All
+                # Results
             except:
                 a = None
 
             if(a==None):
                 try:
                     a = detail.xpath(".//h3/text()").get()
+                    check = a
                 except:
                     a = None
-            if(a!=None):
-                page.append(f"https://www.yelp.com{a}")
+            if(catg=='both'):
+                if(a!=None):
+                    print()
+                    print()
+                    print(check, a)
+                    print()
+                    page.append(f"https://www.yelp.com{a}")
+            else:
+                if(catg == 'Sponsored Results'):
+                    if(a!=None and check in catg):
+                        print()
+                        print()
+                        print(check,a)
+                        print()
+                        page.append(f"https://www.yelp.com{a}")
+
 
         # for i in page:
         #     print(i)
@@ -177,144 +202,321 @@ class YelpspiderSpider(scrapy.Spider):
         html = driver.page_source
         response_obj = Selector(text=html)
         page = response.meta['page']
-
+        category = response.meta['category']
         index = response.meta['index']
         find = response.meta['find']
         near = response.meta['near']
         catg = response.meta['catg']
         duplicateurl = response.meta['duplicateurl']
 
+        if(response.url=='https://www.google.com/'):
+            duplicatename = self.webname + category
+            finalemail = response.meta['finalemail']
+            if ((catg == category or catg == 'both') and duplicatename not in duplicateurl):
+                duplicateurl.append(duplicatename)
+                Yelpdetails_Item['Name'] = self.name
+                Yelpdetails_Item['website_link'] = self.web_link
+                Yelpdetails_Item['website_name'] = self.webname
+                Yelpdetails_Item['phone'] = self.phone
+                Yelpdetails_Item['Direction'] = self.direction
+                Yelpdetails_Item['category'] = category
+                Yelpdetails_Item['find'] = find
+                Yelpdetails_Item['near'] = near
 
-        try:
-            name = response_obj.xpath("//h1/text()").get()
-        except:
-            name = None
+                Yelpdetails_Item['email1'] = "NA"
+                Yelpdetails_Item['email2'] = "NA"
+                Yelpdetails_Item['email3'] = "NA"
+                Yelpdetails_Item['email4'] = "NA"
+                Yelpdetails_Item['email5'] = "NA"
+                if(len(finalemail)<5):
+                    length=len(finalemail)
+                else:
+                    length=5
+                i=4
+                for i in range(length):
+                    email='email'+str(i+1)
+                    Yelpdetails_Item[email] = finalemail[i]
 
-        try:
-            webname = response_obj.xpath("//*[@id='wrap']/div[4]/div/div[4 or 3]/div/div/div[2]/div[2]/div/div/section[1 or 2]/div/div[1]/div/div[2]/p[2]/a/text()").get()
-        except:
-            webname = None
+                for j in range(i+1,5):
+                    email = 'email' + str(j + 1)
+                    Yelpdetails_Item[email] = "NA"
 
-        if(webname != None):
-            try:
-                web_link  = response_obj.xpath("//*[@id='wrap']/div[4]/div/div[4 or 3]/div/div/div[2]/div[2]/div/div/section[1 or 2]/div/div[1]/div/div[2]/p[2]/a/@href").get()
-            except:
-                web_link = None
+                yield Yelpdetails_Item
 
-            try:
-                phone = response_obj.xpath("//*[@id='wrap']/div[4]/div/div[4 or 3]/div/div/div[2]/div[2]/div/div/section[1 or 2]/div/div[2]/div/div[2]/p[2]/text()").get()
-            except:
-                phone = None
-            try:
-                direction = response_obj.xpath("//*[@id='wrap']/div[4]/div/div[3 or 4]/div/div/div[2]/div[2]/div/div/section[1 or 2]/div/div[3]/div/div[2]/p/a/@href").get()
-            except:
-                direction = None
-        else:
-            web_link = None
-            try:
-                phone = response_obj.xpath("//*[@id='wrap']/div[4]/div/div[4 or 3]/div/div/div[2]/div[2]/div/div/section[1 or 2]/div/div[2 or 1]/div/div[2]/p[2]/text()").get()
-            except:
-                phone = None
-            try:
-                direction = response_obj.xpath("//*[@id='wrap']/div[4]/div/div[3 or 4]/div/div/div[2]/div[2]/div/div/section[1 or 2]/div/div[3 or 2]/div/div[2]/p/a/@href").get()
-            except:
-                direction = None
+            page.pop(0)
+            if len(page) != 0:
 
+                if ('Sponsored Results' in page[0] or 'Sponsored Result' in page[0]):
+                    category = 'Sponsored Results'
+                    page.pop(0)
+                    a = page[0]
+                elif ('All Results' in page[0] or 'All Result' in page[0]):
+                    category = 'All Results'
+                    page.pop(0)
+                    a = page[0]
+                else:
+                    a = page[0]
+                # a=page[0]
+                yield SeleniumRequest(
+                    url=a,
+                    wait_time=3,
+                    screenshot=True,
+                    callback=self.scrapepages,
+                    meta={'page': page, 'category': category, 'index': index, 'find': find, 'near': near, 'catg': catg,'duplicateurl': duplicateurl},
+                    dont_filter=True
+                )
 
-
-        try:
-            category = response.meta['category']
-        except:
-            category = 'All Results'
-        print()
-        print(name)
-        print(direction)
-        print(web_link)
-        print(webname)
-        print(phone)
-        print(category)
-        print()
-        if(name == None):
-            name="NA"
-
-        if (web_link == None):
-            web_link="NA"
-        else:
-            web_link=f"https://www.yelp.com{web_link}"
-
-        if (direction == None):
-            direction = "NA"
-        else:
-            direction=f"https://www.yelp.com{direction}"
-
-        if (webname == None):
-            webname="NA"
-
-        if (phone == None):
-            phone="NA"
-
-        # Sponsored Results
-        #         # All Results
-
-        print()
-        print()
-        print()
-        print()
-        print(catg)
-        print(category)
-        print()
-        print()
-        print()
-        print()
-
-        duplicatename = webname+category
-
-        if((catg == category or catg == 'both') and duplicatename not in duplicateurl):
-            duplicateurl.append(duplicatename)
-            
-            Yelpdetails_Item['Name'] = name
-            Yelpdetails_Item['website_link'] = web_link
-            Yelpdetails_Item['website_name'] = webname
-            Yelpdetails_Item['phone'] = phone
-            Yelpdetails_Item['Direction'] = direction
-            Yelpdetails_Item['category'] = category
-            Yelpdetails_Item['find'] = find
-            Yelpdetails_Item['near'] = near
-            yield Yelpdetails_Item
-
-        page.pop(0)
-        if len(page)!=0:
-
-            if('Sponsored Results' in page[0] or 'Sponsored Result' in page[0]):
-                category = 'Sponsored Results'
-                page.pop(0)
-                a=page[0]
-            elif('All Results' in page[0] or 'All Result' in page[0]):
-                category = 'All Results'
-                page.pop(0)
-                a=page[0]
             else:
-                a=page[0]
-            # a=page[0]
+                yield SeleniumRequest(
+                    url="https://www.yelp.com/",
+                    wait_time=3,
+                    screenshot=True,
+                    callback=self.parse,
+                    meta={'index': index},
+                    dont_filter=True
+                )
+
+        else:
+
+            try:
+                name = response_obj.xpath("//h1/text()").get()
+            except:
+                name = None
+
+            try:
+                webname = response_obj.xpath("//*[@id='wrap']/div[4]/div/div[4 or 3]/div/div/div[2]/div[2]/div/div/section[1 or 2]/div/div[1]/div/div[2]/p[2]/a/text()").get()
+            except:
+                webname = None
+
+            if(webname != None):
+                try:
+                    web_link  = response_obj.xpath("//*[@id='wrap']/div[4]/div/div[4 or 3]/div/div/div[2]/div[2]/div/div/section[1 or 2]/div/div[1]/div/div[2]/p[2]/a/@href").get()
+                except:
+                    web_link = None
+
+                try:
+                    phone = response_obj.xpath("//*[@id='wrap']/div[4]/div/div[4 or 3]/div/div/div[2]/div[2]/div/div/section[1 or 2]/div/div[2]/div/div[2]/p[2]/text()").get()
+                except:
+                    phone = None
+                try:
+                    direction = response_obj.xpath("//*[@id='wrap']/div[4]/div/div[3 or 4]/div/div/div[2]/div[2]/div/div/section[1 or 2]/div/div[3]/div/div[2]/p/a/@href").get()
+                except:
+                    direction = None
+            else:
+                web_link = None
+                try:
+                    phone = response_obj.xpath("//*[@id='wrap']/div[4]/div/div[4 or 3]/div/div/div[2]/div[2]/div/div/section[1 or 2]/div/div[2 or 1]/div/div[2]/p[2]/text()").get()
+                except:
+                    phone = None
+                try:
+                    direction = response_obj.xpath("//*[@id='wrap']/div[4]/div/div[3 or 4]/div/div/div[2]/div[2]/div/div/section[1 or 2]/div/div[3 or 2]/div/div[2]/p/a/@href").get()
+                except:
+                    direction = None
+
+
+
+            try:
+                category = category
+            except:
+                category = 'All Results'
+            print()
+            print(name)
+            print(direction)
+            print(web_link)
+            print(webname)
+            print(phone)
+            print(category)
+            print()
+            if(name == None):
+                name="NA"
+
+            if (web_link == None):
+                web_link="NA"
+            else:
+                web_link=f"https://www.yelp.com{web_link}"
+
+            if (direction == None):
+                direction = "NA"
+            else:
+                direction=f"https://www.yelp.com{direction}"
+
+            if (webname == None):
+                webname="NA"
+
+            if (phone == None):
+                phone="NA"
+
+            self.name=name
+            self.web_link = web_link
+            self.webname = webname
+            self.phone = phone
+            self.direction = direction
+
+
+
+            print()
+            print()
+            print()
+            print()
+            print(catg)
+            print(category)
+            print()
+            print()
+            print()
+            print()
+            if(web_link != "NA"):
+                yield SeleniumRequest(
+                    url=web_link,
+                    wait_time=3,
+                    screenshot=True,
+                    callback=self.emailtrack,
+                    dont_filter=True,
+                    meta={'page': page, 'category': category, 'index': index, 'find': find, 'near': near, 'catg': catg,'duplicateurl': duplicateurl}
+                )
+            else:
+                finalemail=[]
+                yield SeleniumRequest(
+                    url='https://www.google.com/',
+                    wait_time=3,
+                    screenshot=True,
+                    callback=self.scrapepages,
+                    dont_filter=True,
+                    meta={'page': page, 'category': category, 'index': index, 'find': find, 'near': near, 'catg': catg,'duplicateurl': duplicateurl,'finalemail': finalemail}
+                )
+
+
+
+
+
+    def emailtrack(self,response):
+        driver = response.meta['driver']
+        html = driver.page_source
+        response_obj = Selector(text=html)
+        page = response.meta['page']
+        category = response.meta['category']
+        index = response.meta['index']
+        find = response.meta['find']
+        near = response.meta['near']
+        catg = response.meta['catg']
+        duplicateurl = response.meta['duplicateurl']
+        links = LxmlLinkExtractor(allow=()).extract_links(response)
+        Finallinks = [str(link.url) for link in links]
+        links = []
+        for link in Finallinks:
+            if ('Contact' in link or 'contact' in link or 'About' in link or 'about' in link or 'home' in link or 'Home' in link or 'HOME' in link or 'CONTACT' in link or 'ABOUT' in link):
+                links.append(link)
+
+        links.append(str(response.url))
+
+        if(len(links)>0):
+            l=links[0]
+            links.pop(0)
+            uniqueemail = set()
             yield SeleniumRequest(
-                url=a,
+                url=l,
+                wait_time=3,
+                screenshot=True,
+                callback=self.finalemail,
+                dont_filter=True,
+                meta={'links': links,'page': page, 'category': category, 'index': index, 'find': find, 'near': near, 'catg': catg,'duplicateurl': duplicateurl,'uniqueemail': uniqueemail}
+            )
+        else:
+            yield SeleniumRequest(
+                url='https://www.google.com/',
                 wait_time=3,
                 screenshot=True,
                 callback=self.scrapepages,
-                meta={'page': page,'category': category,'index': index,'find': find,'near': near,'catg': catg,'duplicateurl': duplicateurl},
-                dont_filter=True
+                dont_filter=True,
+                meta={'page': page, 'category': category, 'index': index, 'find': find, 'near': near, 'catg': catg,'duplicateurl': duplicateurl}
             )
 
-        else:
+
+    def finalemail(self, response):
+        links = response.meta['links']
+        driver = response.meta['driver']
+        html = driver.page_source
+        response_obj = Selector(text=html)
+        page = response.meta['page']
+        category = response.meta['category']
+        index = response.meta['index']
+        find = response.meta['find']
+        near = response.meta['near']
+        catg = response.meta['catg']
+        duplicateurl = response.meta['duplicateurl']
+        uniqueemail = response.meta['uniqueemail']
+
+        flag = 0
+        bad_words = ['facebook', 'instagram', 'youtube', 'twitter', 'wiki']
+        for word in bad_words:
+            if word in str(response.url):
+                # return
+                flag = 1
+        if (flag != 1):
+            html_text = str(response.text)
+            mail_list = re.findall('\w+@\w+\.{1}\w+', html_text)
+            #
+            mail_list = set(mail_list)
+            if (len(mail_list) != 0):
+                for i in mail_list:
+                    mail_list = i
+                    if (mail_list not in uniqueemail):
+                        uniqueemail.add(mail_list)
+                        print()
+                        print()
+                        print()
+                        print(uniqueemail)
+                        print()
+                        print()
+                        print()
+            else:
+                pass
+
+        if (len(links) > 0 and len(uniqueemail) < 5):
+            print()
+            print()
+            print()
+            print('hi', len(links))
+            print()
+            print()
+            print()
+            l = links[0]
+            links.pop(0)
             yield SeleniumRequest(
-                url="https://www.yelp.com/",
+                url=l,
                 wait_time=3,
                 screenshot=True,
-                callback=self.parse,
-                meta={'index': index},
-                dont_filter=True
+                callback=self.finalemail,
+                dont_filter=True,
+                meta={'links': links,'page': page, 'category': category, 'index': index, 'find': find, 'near': near, 'catg': catg,'duplicateurl': duplicateurl,'uniqueemail': uniqueemail}
             )
-
-
-
-
+        else:
+            print()
+            print()
+            print()
+            print('hello')
+            print()
+            print()
+            print()
+            emails = list(uniqueemail)
+            finalemail = []
+            discard = ['robert@broofa.com']
+            for email in emails:
+                if ('.in' in email or '.com' in email or 'info' in email):
+                    for dis in discard:
+                        if (dis not in email):
+                            finalemail.append(email)
+            print()
+            print()
+            print()
+            print('final', finalemail)
+            print()
+            print()
+            print()
+            yield SeleniumRequest(
+                url='https://www.google.com/',
+                wait_time=3,
+                screenshot=True,
+                callback=self.scrapepages,
+                dont_filter=True,
+                meta={'page': page, 'category': category, 'index': index, 'find': find, 'near': near, 'catg': catg,'duplicateurl': duplicateurl,'finalemail': finalemail}
+            )

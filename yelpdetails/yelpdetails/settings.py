@@ -22,7 +22,7 @@ NEWSPIDER_MODULE = 'yelpdetails.spiders'
 ROBOTSTXT_OBEY = False
 # PROXY_POOL_ENABLED = True
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
-#CONCURRENT_REQUESTS = 32
+CONCURRENT_REQUESTS = 32
 
 # Configure a delay for requests for the same website (default: 0)
 # See https://docs.scrapy.org/en/latest/topics/settings.html#download-delay
@@ -100,5 +100,5 @@ SELENIUM_DRIVER_ARGUMENTS=[]  # '--headless' if using chrome instead of firefox
 
 
 CLOSESPIDER_ITEMCOUNT = 1000
-HTTPCACHE_ENABLED = True
-HTTPCACHE_EXPIRATION_SECS = 3600
+# HTTPCACHE_ENABLED = True
+# HTTPCACHE_EXPIRATION_SECS = 3600
