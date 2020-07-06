@@ -17,11 +17,9 @@ class YelpdetailsItem(scrapy.Item):
     category = scrapy.Field()
     find = scrapy.Field()
     near = scrapy.Field()
-    email1 = scrapy.Field()
-    email2 = scrapy.Field()
-    email3 = scrapy.Field()
-    email4 = scrapy.Field()
-    email5 = scrapy.Field()
+    email = scrapy.Field()
+    website = scrapy.Field()
+
 
 
 

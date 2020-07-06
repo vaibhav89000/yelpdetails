@@ -28,11 +28,8 @@ class YelpdetailsPipeline(object):
         category text,
         find text,
         near text,
-        email1 text,
-        email2 text,
-        email3 text,
-        email4 text,
-        email5 text
+        email text,
+        website text
         )""")
         # pass
 
@@ -41,7 +38,7 @@ class YelpdetailsPipeline(object):
         return item
 
     def store_db(self,item):
-        self.curr.execute("""insert into detail values (?,?,?,?,?,?,?,?,?,?,?,?,?)""",(
+        self.curr.execute("""insert into detail values (?,?,?,?,?,?,?,?,?,?)""",(
             item['Name'],
             item['website_link'],
             item['website_name'],
@@ -50,11 +47,8 @@ class YelpdetailsPipeline(object):
             item['category'],
             item['find'],
             item['near'],
-            item['email1'],
-            item['email2'],
-            item['email3'],
-            item['email4'],
-            item['email5']
+            item['email'],
+            item['website']
 
         ))
         self.conn.commit()

@@ -16,6 +16,8 @@ from selenium.webdriver.common.by import By
 
 class YelpspiderSpider(scrapy.Spider):
     name = 'yelpspider'
+
+    website = 'Yelp'
     web_link = ""
     webname = ""
     phone = ""
@@ -26,7 +28,7 @@ class YelpspiderSpider(scrapy.Spider):
         index = 0
         yield SeleniumRequest(
             url="https://www.yelp.com/",
-            wait_time=3,
+            wait_time=1000,
             screenshot=True,
             callback=self.parse,
             meta={'index': index},
@@ -45,6 +47,8 @@ class YelpspiderSpider(scrapy.Spider):
         secondinput = os.path.abspath(os.curdir) + "\web\location.txt"
         thirdinput = os.path.abspath(os.curdir) + "\web\catg.txt"
         fourthinput = os.path.abspath(os.curdir) + "\web\pages.txt"
+
+
 
         f = open(firstinput, "r")
         find=f.read().splitlines()
@@ -93,7 +97,7 @@ class YelpspiderSpider(scrapy.Spider):
             currpage=0
             yield SeleniumRequest(
                 url=driver.current_url,
-                wait_time=3,
+                wait_time=1000,
                 screenshot=True,
                 callback=self.numberofpages,
                 meta = {'page': page,'index': index,'find': find[ind],'near': near[ind],'catg': catg[0],'numpages': numpages,'currpage': currpage},
@@ -109,6 +113,7 @@ class YelpspiderSpider(scrapy.Spider):
         catg=response.meta['catg']
         numpages=response.meta['numpages']
         currpage = response.meta['currpage']
+
 
 
         # details=response_obj.xpath('//li[@class="lemon--li__373c0__1r9wz border-color--default__373c0__3-ifU"]/div[@class="lemon--div__373c0__1mboc container__373c0__3HMKB hoverable__373c0__VqkG7 margin-t3__373c0__1l90z margin-b3__373c0__q1DuY padding-t3__373c0__1gw9E padding-r3__373c0__57InZ padding-b3__373c0__342DA padding-l3__373c0__1scQ0 border--top__373c0__3gXLy border--right__373c0__1n3Iv border--bottom__373c0__3qNtD border--left__373c0__d1B7K border-color--default__373c0__3-ifU"]/div/div/div[2]/div[1]/div/div/div/div/div/div/h4/span')
@@ -128,9 +133,11 @@ class YelpspiderSpider(scrapy.Spider):
             if(a==None):
                 try:
                     a = detail.xpath(".//h3/text()").get()
-                    check = a
+
                 except:
                     a = None
+                if(a!=None):
+                    check = a
             if(catg=='both'):
                 if(a!=None):
                     print()
@@ -140,6 +147,13 @@ class YelpspiderSpider(scrapy.Spider):
                     page.append(f"https://www.yelp.com{a}")
             else:
                 if(catg == 'Sponsored Results'):
+                    print()
+                    print()
+                    print('a',a)
+                    print('check', check)
+                    print('catg', catg)
+                    print()
+                    print()
                     if(a!=None and check in catg):
                         print()
                         print()
@@ -161,7 +175,7 @@ class YelpspiderSpider(scrapy.Spider):
             currpage += 1
             yield SeleniumRequest(
                 url=f"https://www.yelp.com{next_page}",
-                wait_time=3,
+                wait_time=1000,
                 screenshot=True,
                 callback=self.numberofpages,
                 meta={'page': page,'index': index,'find': find,'near': near,'catg': catg,'numpages': numpages,'currpage': currpage},
@@ -188,7 +202,7 @@ class YelpspiderSpider(scrapy.Spider):
                 a = page[0]
             yield SeleniumRequest(
                 url=a,
-                wait_time=3,
+                wait_time=1000,
                 screenshot=True,
                 callback=self.scrapepages,
                 meta={'page': page,'category': category,'index': index,'find': find,'near': near,'catg': catg,'duplicateurl': duplicateurl},
@@ -210,6 +224,17 @@ class YelpspiderSpider(scrapy.Spider):
         duplicateurl = response.meta['duplicateurl']
 
         if(response.url=='https://www.google.com/'):
+            print()
+            print()
+            print(self.webname)
+            print(category)
+            print()
+            print()
+            if (category == None):
+                if (catg == 'Sponsored Results'):
+                    category = 'Sponsored Results'
+                else:
+                    category = 'All Results'
             duplicatename = self.webname + category
             finalemail = response.meta['finalemail']
             if ((catg == category or catg == 'both') and duplicatename not in duplicateurl):
@@ -222,26 +247,43 @@ class YelpspiderSpider(scrapy.Spider):
                 Yelpdetails_Item['category'] = category
                 Yelpdetails_Item['find'] = find
                 Yelpdetails_Item['near'] = near
+                Yelpdetails_Item['website'] = self.website
 
-                Yelpdetails_Item['email1'] = "NA"
-                Yelpdetails_Item['email2'] = "NA"
-                Yelpdetails_Item['email3'] = "NA"
-                Yelpdetails_Item['email4'] = "NA"
-                Yelpdetails_Item['email5'] = "NA"
-                if(len(finalemail)<5):
-                    length=len(finalemail)
+                Yelpdetails_Item['email'] = "NA"
+                # Yelpdetails_Item['email'] = "NA"
+                # Yelpdetails_Item['email3'] = "NA"
+                # Yelpdetails_Item['email4'] = "NA"
+                # Yelpdetails_Item['email5'] = "NA"
+                # if(len(finalemail)<5):
+                #     length=len(finalemail)
+                # else:
+                #     length=5
+                # i=4
+                # for i in range(length):
+                #     email='email'+str(i+1)
+                #     Yelpdetails_Item[email] = finalemail[i]
+                #
+                # for j in range(i+1,5):
+                #     email = 'email' + str(j + 1)
+                #     Yelpdetails_Item[email] = "NA"
+                print()
+                print()
+                print(len(finalemail))
+                print(type(finalemail))
+                print()
+                print()
+                if(len(finalemail)==0):
+                    yield Yelpdetails_Item
                 else:
-                    length=5
-                i=4
-                for i in range(length):
-                    email='email'+str(i+1)
-                    Yelpdetails_Item[email] = finalemail[i]
+                    if(len(finalemail) < 5):
+                        length = len(finalemail)
+                    else:
+                        length = 5
+                    for i in range(0, length):
+                        Yelpdetails_Item['email'] = finalemail[i]
+                        yield Yelpdetails_Item
 
-                for j in range(i+1,5):
-                    email = 'email' + str(j + 1)
-                    Yelpdetails_Item[email] = "NA"
 
-                yield Yelpdetails_Item
 
             page.pop(0)
             if len(page) != 0:
@@ -259,7 +301,7 @@ class YelpspiderSpider(scrapy.Spider):
                 # a=page[0]
                 yield SeleniumRequest(
                     url=a,
-                    wait_time=3,
+                    wait_time=1000,
                     screenshot=True,
                     callback=self.scrapepages,
                     meta={'page': page, 'category': category, 'index': index, 'find': find, 'near': near, 'catg': catg,'duplicateurl': duplicateurl},
@@ -269,7 +311,7 @@ class YelpspiderSpider(scrapy.Spider):
             else:
                 yield SeleniumRequest(
                     url="https://www.yelp.com/",
-                    wait_time=3,
+                    wait_time=1000,
                     screenshot=True,
                     callback=self.parse,
                     meta={'index': index},
@@ -367,7 +409,7 @@ class YelpspiderSpider(scrapy.Spider):
             if(web_link != "NA"):
                 yield SeleniumRequest(
                     url=web_link,
-                    wait_time=3,
+                    wait_time=1000,
                     screenshot=True,
                     callback=self.emailtrack,
                     dont_filter=True,
@@ -377,7 +419,7 @@ class YelpspiderSpider(scrapy.Spider):
                 finalemail=[]
                 yield SeleniumRequest(
                     url='https://www.google.com/',
-                    wait_time=3,
+                    wait_time=1000,
                     screenshot=True,
                     callback=self.scrapepages,
                     dont_filter=True,
@@ -414,7 +456,7 @@ class YelpspiderSpider(scrapy.Spider):
             uniqueemail = set()
             yield SeleniumRequest(
                 url=l,
-                wait_time=3,
+                wait_time=1000,
                 screenshot=True,
                 callback=self.finalemail,
                 dont_filter=True,
@@ -423,7 +465,7 @@ class YelpspiderSpider(scrapy.Spider):
         else:
             yield SeleniumRequest(
                 url='https://www.google.com/',
-                wait_time=3,
+                wait_time=1000,
                 screenshot=True,
                 callback=self.scrapepages,
                 dont_filter=True,
@@ -483,7 +525,7 @@ class YelpspiderSpider(scrapy.Spider):
             links.pop(0)
             yield SeleniumRequest(
                 url=l,
-                wait_time=3,
+                wait_time=1000,
                 screenshot=True,
                 callback=self.finalemail,
                 dont_filter=True,
@@ -514,7 +556,7 @@ class YelpspiderSpider(scrapy.Spider):
             print()
             yield SeleniumRequest(
                 url='https://www.google.com/',
-                wait_time=3,
+                wait_time=1000,
                 screenshot=True,
                 callback=self.scrapepages,
                 dont_filter=True,
